@@ -134,8 +134,6 @@ ORDER BY cost_per_night
 LIMIT $${queryParams.length};
 `;
 
-console.log("FAT LABE HERE", queryString, queryParams);
-
 return pool.query(queryString, queryParams)
 .then(res => res.rows);
 }
