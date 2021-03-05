@@ -148,7 +148,7 @@ exports.getAllProperties = getAllProperties;
  * @return {Promise<{}>} A promise to the property.
  */
 const addProperty = function (property) {
-  const propertyARR = [ 
+  const propertyARR = [
     property.owner_id,
     property.title,
     property.description,
@@ -164,7 +164,7 @@ const addProperty = function (property) {
     property.number_of_bathrooms,
     property.number_of_bedrooms]
 
-    return pool.query(`
+  return pool.query(`
     INSERT INTO properties (
     owner_id,
     title,
@@ -184,11 +184,11 @@ const addProperty = function (property) {
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
     RETURNING *
     `, propertyARR)
- .then(res => {
-   console.log("res rows here", res.rows[0])
-   res.rows[0]
- })
- .catch(error => console.error(error))
+    .then(res => {
+      console.log("res rows here", res.rows[0])
+      res.rows[0]
+    })
+    .catch(error => console.error(error))
 }
 
 exports.addProperty = addProperty;
